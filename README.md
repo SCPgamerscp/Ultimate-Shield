@@ -58,4 +58,4 @@ Minecraft の `mods` フォルダへ入れて起動してください。
 
 All Rights Reserved.
 
-改変・再配布したい場合は作者（[molishaai97-art](https://github.com/molishaai97-art/Ultimate-Shield)）に一声かけてください。許可します。
+改変・再配布したい場合は作者に一声かけてください。許可します。
