@@ -12,12 +12,26 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Minecraft.class)
 public abstract class MinecraftMixin {
     @Shadow
     private int missTime;
+
+    @Shadow
+    protected abstract boolean startAttack();
+
+    @Inject(method = "handleKeybinds", at = @At("HEAD"))
+    private void ultimateshield$handleKeybindsAttackWhileBlocking(CallbackInfo ci) {
+        Minecraft self = (Minecraft) (Object) this;
+        if (self.player != null && ShieldHooks.shouldAllowAttackWhileBlocking(self.player)) {
+            while (self.options.keyAttack.consumeClick()) {
+                this.startAttack();
+            }
+        }
+    }
 
     @Inject(method = "startAttack", at = @At("HEAD"), cancellable = true)
     private void ultimateshield$attackWhileBlocking(CallbackInfoReturnable<Boolean> cir) {
