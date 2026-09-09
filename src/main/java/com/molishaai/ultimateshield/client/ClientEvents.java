@@ -14,6 +14,13 @@ public final class ClientEvents {
     private ClientEvents() {
     }
 
+    public static boolean hasEnoughImpulseToStartSprinting(LocalPlayer player) {
+        if (player.input == null) {
+            return false;
+        }
+        return player.isUnderWater() ? player.input.hasForwardImpulse() : (double) player.input.forwardImpulse >= 0.8D;
+    }
+
     /**
      * Vanilla zeros sprint while using an item. Re-apply sprint at end of tick
      * so we do not overwrite other mods' aiStep mixins.
@@ -36,7 +43,7 @@ public final class ClientEvents {
         }
         boolean wantsSprint = mc.options.keySprint.isDown()
                 || player.input.forwardImpulse >= 0.8F && player.isSprinting();
-        if (wantsSprint && player.input.hasEnoughImpulseToStartSprinting()) {
+        if (wantsSprint && hasEnoughImpulseToStartSprinting(player)) {
             player.setSprinting(true);
         }
     }

@@ -12,7 +12,7 @@ Minecraft **1.20.1 Forge** utility that only changes the vanilla shield.
 
 Required on **both** client and server.
 
-Build with JDK 17 after copying `gradlew` + `gradle/` from the Forge 1.20.1 MDK (47.4.10):
+Build with JDK 17 in this folder:
 
 ```
 ./gradlew build

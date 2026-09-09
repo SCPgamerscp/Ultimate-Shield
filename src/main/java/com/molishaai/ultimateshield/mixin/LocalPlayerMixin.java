@@ -1,6 +1,7 @@
 package com.molishaai.ultimateshield.mixin;
 
 import com.molishaai.ultimateshield.ShieldHooks;
+import com.molishaai.ultimateshield.client.ClientEvents;
 import net.minecraft.client.player.LocalPlayer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -32,7 +33,7 @@ public abstract class LocalPlayerMixin {
         if (self.isPassenger() || self.isMovingSlowly() || !self.canSprint()) {
             return;
         }
-        if (!self.input.hasEnoughImpulseToStartSprinting()) {
+        if (!ClientEvents.hasEnoughImpulseToStartSprinting(self)) {
             return;
         }
         cir.setReturnValue(true);

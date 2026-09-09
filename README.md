@@ -20,9 +20,7 @@ Minecraft **1.20.1 / Forge** mod.
 
 ## ビルド
 
-1. [Forge 1.20.1 MDK](https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html)（推奨 47.4.10）を展開する
-2. MDK の `gradle/` と `gradlew` / `gradlew.bat` をこのフォルダへコピーする
-3. JDK 17 を入れ、このフォルダで:
+JDK 17 を入れ、このフォルダで:
 
 ```
 ./gradlew build
